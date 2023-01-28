@@ -1,0 +1,19 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - name: "Warm up"
+      duration: 5
+      arrivalRate: 10
+    - name: "Ramp up"
+      duration: 15
+      arrivalRate: 50
+      rampTo: 100
+    - name: "High load"
+      duration: 10
+      arrivalRate: 100
+
+scenarios:
+  - name: "Search employees"
+    flow:
+      - get:
+          url: "/employees"
